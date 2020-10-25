@@ -17,33 +17,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand" href="index.html">My Tour Review</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Write a review</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Read & Plan</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item ">
-                    <a class="nav-link" href="login.html">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="register.html">Register</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <header id="header">
+        <!-- header loaded from separate -->
+    </header>
     <main>
         <div class="container" style="margin-top: 35px;">
             <div class="row">
@@ -60,6 +36,9 @@
             </div>
         </div>
     </main>
+    <script>
+        $("#header").load("components/_header.html");
+    </script>
     <footer>
 
     </footer>
