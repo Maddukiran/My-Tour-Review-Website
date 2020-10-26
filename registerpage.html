@@ -22,7 +22,7 @@
     </header>
     <main>
         <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1">Login</span>
+            <span class="navbar-brand mb-0 h1">Register</span>
         </nav>
         <div class="container-fluid" style="margin-top: 35px;">
             <div class="row">
@@ -33,20 +33,24 @@
                     <div class="" style="height: 100%;">
                         <form autocomplete="off">
                             <div class="form-group">
-                                <label for="email">Email address</label>
-                                <input type="email" class="form-control" id="email">
-                                <small id="emailHelp" class="form-text text-muted">If not registered. Please register first.</small>
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="emial" name="email">
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="password" name="password">
                             </div>
-                            <button type="submit" class="btn btn-primary">Log In</button>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmpassword" name="confirmpassword">
+                            </div>
+                            <button type="reset" class="btn btn-sm btn-danger">Clear</button> <br> <br>
+                            <button type="submit" class="btn btn-primary">Register</button>
                         </form>
                         <br>
                         <div>
-                            <p>New User?
-                                <a href="registerpage.html">Register Now</a>
+                            <p>Have an Account?
+                                <a href="loginpage.html">Log In Now</a>
                             </p>
                         </div>
                     </div>
