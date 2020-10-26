@@ -11,6 +11,8 @@
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/validations.js"></script>
+    <script src="services/userservices.js"></script>
 </head>
 
 <body>
@@ -28,22 +30,22 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="" style="height: 100%;">
-                        <form autocomplete="off">
+                        <form method="POST" autocomplete="off" onsubmit="register()">
                             <div class="form-group">
                                 <label for="email">Email address</label>
-                                <input type="email" class="form-control" id="emial" name="email">
+                                <input type="email" class="form-control" id="email" name="email" required autofocus>
                             </div>
                             <div class="form-group">
                                 <label for="name">Nick Name</label>
-                                <input type="email" class="form-control" id="name" name="name">
+                                <input type="text" class="form-control" id="name" name="name" required>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" name="password">
+                                <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <div class="form-group">
                                 <label for="confirmpassword">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirmpassword" name="confirmpassword">
+                                <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" required>
                             </div>
                             <button type="reset" class="btn btn btn-danger">Clear</button>
                             <button type="submit" class="btn btn-primary">Register</button>
@@ -61,6 +63,37 @@
     </main>
     <script>
         $("#header").load("components/_header.html");
+
+        function register() {
+            event.preventDefault();
+
+            // get form data
+            let email = document.querySelector("#email").value;
+            let name = document.querySelector("#name").value;
+            let password = document.querySelector("#password").value;
+            let confirmpassword = document.querySelector("#confirmpassword").value;
+
+            // validate password
+            try {
+                const validateObj = new RegisterValidator();
+                validateObj.validate(password, confirmpassword);
+
+                // user object
+                var user_details = {
+                    'email': email,
+                    'name': name,
+                    'password': password
+                }
+
+                // register user
+                const userServicesObj = new UserServices();
+                userServicesObj.register(user_details);
+
+                alert("User Added..!");
+            } catch (err) {
+                alert(err);
+            }
+        }
     </script>
 </body>
 

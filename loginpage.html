@@ -11,6 +11,7 @@
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="services/userservices.js"></script>
 </head>
 
 <body>
@@ -28,15 +29,15 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="" style="height: 100%;">
-                        <form autocomplete="off">
+                        <form method="POST" autocomplete="off" onsubmit="login()">
                             <div class="form-group">
                                 <label for="email">Email address</label>
-                                <input type="email" class="form-control" id="email">
+                                <input type="email" class="form-control" id="email" name="email" required autofocus>
                                 <small id="emailHelp" class="form-text text-muted">If not registered. Please register first.</small>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password">
+                                <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Log In</button>
                         </form>
@@ -53,6 +54,22 @@
     </main>
     <script>
         $("#header").load("components/_header.html");
+
+        function login() {
+            event.preventDefault();
+
+            // get form data
+            let email = document.querySelector("#email").value;
+            let password = document.querySelector("#password").value;
+
+            try {
+                //login function
+                const userServicesObj = new UserServices();
+                userServicesObj.login(email, password);
+            } catch (err) {
+                alert(err);
+            }
+        }
     </script>
 </body>
 

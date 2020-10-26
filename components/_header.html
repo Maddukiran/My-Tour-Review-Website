@@ -9,19 +9,46 @@
                 <a class="nav-link" href="../index.html">Home </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../writereview.html">Write a review</a>
+                <a class="nav-link" href="../writereview.html" data-loggedin=true>Write a review</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../reviewlist.html">Read & Plan</a>
+                <a class="nav-link" href="../reviewlist.html" data-loggedin=true>Read & Plan</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item ">
-                <a class="nav-link" href="../loginpage.html">Log In</a>
+                <a class="nav-link" href="../loginpage.html" data-loggedin=false>Log In</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../registerpage.html">Register</a>
+                <a class="nav-link" href="../registerpage.html" data-loggedin=false>Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="" onclick="logout()" data-loggedin=true>Logout</a>
             </li>
         </ul>
     </div>
 </nav>
+
+<script>
+    if (localStorage.getItem("LOGGED_IN_USER")) {
+        console.log("User is logged in");
+        // Hide menus which has data-loggedin=false
+        // Show menus which has data-loggedin=true
+        document.querySelectorAll(".nav-link[data-loggedin=false] , .nav-item[data-loggedin=false] , .dropdown-item[data-loggedin=false]").forEach(obj => obj.style.display = "none");
+        document.querySelectorAll(".nav-link[data-loggedin=true] , .nav-item[data-loggedin=true] , .dropdown-item[data-loggedin=true]").forEach(obj => obj.style.display = "block");
+    } else {
+
+        console.log("User is not logged in");
+        // Hide menus which has data-loggedin=true
+        // Show menus which has data-loggedin=false
+        document.querySelectorAll(".nav-link[data-loggedin=true] , .nav-item[data-loggedin=true] , .dropdown-item[data-loggedin=true]").forEach(obj => obj.style.display = "none");
+        document.querySelectorAll(".nav-link[data-loggedin=false] , .nav-item[data-loggedin=false] , .dropdown-item[data-loggedin=false]").forEach(obj => obj.style.display = "block");
+
+    }
+
+    function logout() {
+        // localStorage.clear();
+        localStorage.removeItem("LOGGED_IN_USER");
+        window.location.href = "../index.html";
+    }
+</script>
