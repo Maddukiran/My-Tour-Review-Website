@@ -11,9 +11,6 @@
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <style>
-
-    </style>
 </head>
 
 <body>
@@ -45,6 +42,12 @@
                             </div>
                         </div>
                         <div class="row p-1">
+                            <div class="col-lg p-1 form-group">
+                                <label for="myimage">Share a image</label>
+                                <input type="file" class="form-control-file" id="myimage" name="myimage">
+                            </div>
+                        </div>
+                        <div class="row p-1">
                             <div class="col-lg p-1">
                                 <textarea class="form-control" id="review" name="review" placeholder="Write your review" rows="5"></textarea>
                             </div>
@@ -60,8 +63,6 @@
             </div>
         </div>
     </main>
-    <footer>
-    </footer>
     <script>
         $("#header").load("components/_header.html");
     </script>
